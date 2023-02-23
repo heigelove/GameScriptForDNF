@@ -22,7 +22,7 @@ file_name:  the name of the file path
 def input_word_to_txt(window_name, file_name):
     # 打开变量 file_name的文件
     ret = win32api.ShellExecute(1, "open", file_name, '', '', 1)
-    print("opening")
+    print("Opening")
     time.sleep(2)
     # 查找窗口句柄，根据变量 window_name来查找，window_name的值要与标题完全一致
     handle = win32gui.FindWindow(None, window_name)
@@ -58,6 +58,7 @@ def input_word_to_txt(window_name, file_name):
     button_id = win32gui.GetMenuItemID(sub_menu, 3)
     # 保存输入的内容
     win32gui.PostMessage(handle, win32con.WM_COMMAND, button_id, 0)
+    print("Close")
     # 关闭窗口
     win32gui.PostMessage(handle, win32con.WM_CLOSE, 0, 0)
 
