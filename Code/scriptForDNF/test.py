@@ -13,6 +13,8 @@ import win32ui
 import win32api
 import time
 
+from utils.buttonDown import button_down
+
 """
 window_name: the name of the window - window title name
 file_name:  the name of the file path
@@ -48,11 +50,8 @@ def input_word_to_txt(window_name, file_name):
             win32gui.SendMessage(handle_edit, win32con.WM_CHAR, ord(ch), 0)
             time.sleep(0.05)
 
-        # 写完一行以后，模拟键盘输入Enter键，进行换行，Enter键对应的键值是13
-        win32api.keybd_event(13, 0, 0, 0)
-        time.sleep(0.05)
-        # 这行代码代表Enter建松开
-        win32api.keybd_event(13, 0, win32con.KEYEVENTF_KEYUP, 0)
+        # 按下Enter键
+        button_down(13, 0.05)
 
     # 根据上面代码找到的菜单获取保存按钮的索引值，记事本保存按钮，从0开始计数正好是第3个。
     button_id = win32gui.GetMenuItemID(sub_menu, 3)
