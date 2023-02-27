@@ -1,5 +1,5 @@
 """
-@File test.py
+@File word.py
 @Contact cmrhyq@163.com
 @License (C)Copyright 2022-2025, AlanHuang
 @Modify Time 2023/2/23 14:13
@@ -13,7 +13,8 @@ import win32ui
 import win32api
 import time
 
-from utils.buttonDown import button_down
+from utils.button import button_down
+from enums.buttonEnum import LeftKeyBoard, RightKeyBoard, ControlKeyBoard, FunctionKeyBoard
 
 """
 window_name: the name of the window - window title name
@@ -51,7 +52,7 @@ def input_word_to_txt(window_name, file_name):
             time.sleep(0.05)
 
         # 按下Enter键
-        button_down(13, 0.05)
+        button_down(ControlKeyBoard.enter.value)
 
     # 根据上面代码找到的菜单获取保存按钮的索引值，记事本保存按钮，从0开始计数正好是第3个。
     button_id = win32gui.GetMenuItemID(sub_menu, 3)
